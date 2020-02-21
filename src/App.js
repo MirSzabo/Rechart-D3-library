@@ -7,52 +7,71 @@ import {
   Tooltip,
   Legend,
   Line,
+  ReferenceLine,
   ComposedChart,
   Area,
   Bar
 } from "recharts";
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
+    date: "22.01.2020",
+    temperature: 10
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
+    date: "23.01.2020",
+    temperature: 5
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
+    date: "24.01.2020",
+    temperature: 25
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
+    date: "25.01.2020",
+    temperature: 15
   },
   {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
+    date: "26.01.2020",
+    temperature: 18
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
+    date: "27.01.2020",
+    temperature: 19
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
+    date: "28.01.2020",
+    temperature: 5
+  },
+  {
+    date: "29.01.2020",
+    temperature: 0
+  },
+  {
+    date: "30.01.2020",
+    temperature: 20
+  },
+  {
+    date: "31.01.2020",
+    temperature: 23
+  },
+  {
+    date: "01.02.2020",
+    temperature: 30
+  },
+  {
+    date: "02.02.2020",
+    temperature: 15
+  },
+  {
+    date: "03.02.2020",
+    temperature: 9
+  },
+  {
+    date: "04.02.2020",
+    temperature: 3
+  },
+  {
+    date: "05.02.2020",
+    temperature: 7
   }
 ];
 class App extends Component {
@@ -60,22 +79,21 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>Re Charts</h1>
+          <h1>AIR</h1>
         </header>
-        <h2 style={{ textAlign: "left" }}>Line Chart</h2>
+        <h2 style={{ textAlign: "left" }}>TEMPERATURE</h2>
         <LineChart
-          width={730}
+          width={930}
           height={250}
           data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+           <CartesianGrid strokeDasharray="3 3" stroke="white" />
+          <XAxis dataKey="date" interval={0} tick={{fontSize: 8}}/>
+          <YAxis type="number" domain={[0,30]}  tick={{fontSize: 8}} fill="none" ticks={[0, 5, 10, 15, 20, 25, 30]}/>
           <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <ReferenceLine y={15} stroke="green" strokeWidth={2} />
+          <Line type="monotone" dataKey="temperature" stroke="black" fill="black" strokeWidth={2} />
         </LineChart>
       </div>
     );
