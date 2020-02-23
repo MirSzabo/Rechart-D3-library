@@ -89,8 +89,8 @@ class App extends Component {
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
            <CartesianGrid strokeDasharray="3 3" stroke="white" />
-          <XAxis dataKey="date" interval={0} tick={{fontSize: 8}}/>
-          <YAxis type="number" domain={[0,30]}  tick={{fontSize: 8}} fill="none" ticks={[0, 5, 10, 15, 20, 25, 30]}/>
+          <XAxis stroke= "white" dataKey="date" interval={0} tick={{fontSize: 8, fill: 'rgba(0, 0, 0, 0.87)'}}/>
+          <YAxis stroke= "white" type="number" domain={[0,30]}  tick={{fontSize: 8, fill: 'rgba(0, 0, 0, 0.87)'}} fill="none" ticks={[0, 5, 10, 15, 20, 25, 30]}/>
           <Tooltip />
           <ReferenceLine y={15} stroke="green" strokeWidth={2} />
           <Line type="monotone" dataKey="temperature" stroke="black" fill="black" strokeWidth={2} />
