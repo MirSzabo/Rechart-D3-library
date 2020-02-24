@@ -72,6 +72,10 @@ const data = [
   {
     date: "05.02.2020",
     temperature: 7
+  },
+  {
+    date: "06.02.2020",
+    temperature: 10
   }
 ];
 class App extends Component {
