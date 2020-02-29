@@ -93,8 +93,8 @@ class App extends Component {
           <YAxis stroke= "white" type="number" domain={[0,30]}  tick={{fontSize: 8, fill: 'rgba(0, 0, 0, 0.87)'}} fill="none" ticks={[0, 5, 10, 15, 20, 25, 30]}/>
           <Tooltip />
           <ReferenceLine y={15} stroke="green" strokeWidth={2} />
-          <ReferenceLine y={2} stroke="blue" strokeWidth={2} />
-          <ReferenceLine y={28} stroke="red" strokeWidth={2} />
+          <ReferenceLine y={2} stroke="blue" strokeWidth={1} />
+          <ReferenceLine y={28} stroke="red" strokeWidth={1} />
           <Line type="monotone" dataKey="temperature" stroke="black" fill="black" strokeWidth={2} />
         </LineChart>
       </div>
