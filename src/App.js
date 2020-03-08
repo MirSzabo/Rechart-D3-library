@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import {
+  ResponsiveContainer,
   LineChart,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
+  Brush,
   Legend,
   Line,
   ReferenceLine,
@@ -12,6 +14,9 @@ import {
   Area,
   Bar
 } from "recharts";
+
+import shiso from "./components/lettuce.json";
+
 const data = [
   {
     date: "22.01.2020",
@@ -74,31 +79,52 @@ const data = [
     temperature: 7
   }
 ];
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header>
-          <h1>AIR</h1>
-        </header>
-        <h2 style={{ textAlign: "left" }}>TEMPERATURE</h2>
+
+const App = () => {
+  return (
+    <div className="App">
+      <header>
+        <h1>AIR</h1>
+      </header>
+      <h2 style={{ textAlign: "left" }}>TEMPERATURE</h2>
+      <ResponsiveContainer width={"100%"} height={400}>
         <LineChart
-          width={930}
-          height={250}
-          data={data}
+          data={shiso}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
-           <CartesianGrid strokeDasharray="3 3" stroke="white" />
-          <XAxis stroke= "white" dataKey="date" interval={0} tick={{fontSize: 8, fill: 'rgba(0, 0, 0, 0.87)'}}/>
-          <YAxis stroke= "white" type="number" domain={[0,30]}  tick={{fontSize: 8, fill: 'rgba(0, 0, 0, 0.87)'}} fill="none" ticks={[0, 5, 10, 15, 20, 25, 30]}/>
+          <XAxis
+            stroke="white"
+            dataKey="timestamp"
+            domain={["dataMin", "dataMax"]}
+            //interval={0}
+            tick={{ fontSize: 8, fill: "rgba(0, 0, 0, 0.87)" }}
+          />
+          <YAxis
+            stroke="white"
+            type="number"
+            domain={["dataMin", "dataMax"]}
+            //domain={[0, 30]}
+            tick={{ fontSize: 8, fill: "rgba(0, 0, 0, 0.87)" }}
+            fill="none"
+            ticks={[15, 20, 25]}
+          />
           <Tooltip />
-          <ReferenceLine y={15} stroke="green" strokeWidth={2} />
-          <ReferenceLine y={2} stroke="blue" strokeWidth={1} />
-          <ReferenceLine y={28} stroke="red" strokeWidth={1} />
-          <Line type="monotone" dataKey="temperature" stroke="black" fill="black" strokeWidth={2} />
+          <ReferenceLine y={20} stroke="#6F9C67" strokeWidth={2} />
+          <ReferenceLine y={18} stroke="#9C5256" strokeWidth={2} />
+          <ReferenceLine y={24} stroke="#9C5256" strokeWidth={2} />
+          <Line
+            type="monotone"
+            name="Temperature"
+            unit={"°C"}
+            dataKey="temp"
+            stroke="black"
+            fill="black"
+            strokeWidth={2}
+          />
+          <Brush fill="#EBECF0" stroke="#73ABD7" width={"100%"} height={20} />
         </LineChart>
-      </div>
-    );
-  }
-}
+      </ResponsiveContainer>
+    </div>
+  );
+};
 export default App;
