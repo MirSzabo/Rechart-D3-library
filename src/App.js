@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 import {
   ResponsiveContainer,
   LineChart,
@@ -87,31 +88,45 @@ const App = () => {
         <h1>AIR</h1>
       </header>
       <h2 style={{ textAlign: "left" }}>TEMPERATURE</h2>
-      <ResponsiveContainer width={"100%"} height={400}>
+      <ResponsiveContainer
+        className="chart-container"
+        width={"100%"}
+        height={400}
+      >
         <LineChart
           data={shiso}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
         >
           <XAxis
-            stroke="white"
+            stroke="#DDE0E3"
             dataKey="timestamp"
             domain={["dataMin", "dataMax"]}
             //interval={0}
-            tick={{ fontSize: 8, fill: "rgba(0, 0, 0, 0.87)" }}
+            tick={{
+              transform: "translate(-60, 0)",
+              fontFamily: "Open Sans",
+              textAlign: "right",
+              lineHeight: "10px",
+              fontSize: 10,
+              fill: "#666666"
+            }}
           />
           <YAxis
-            stroke="white"
+            stroke="#DDE0E3"
             type="number"
             domain={["dataMin", "dataMax"]}
             //domain={[0, 30]}
-            tick={{ fontSize: 8, fill: "rgba(0, 0, 0, 0.87)" }}
+            tick={{
+              transform: "translate(-20, 0)",
+              fontSize: 10,
+              fill: "#666666"
+            }}
             fill="none"
-            ticks={[15, 20, 25]}
+            ticks={[10, 15, 20, 25, 30]}
           />
           <Tooltip />
           <ReferenceLine y={20} stroke="#6F9C67" strokeWidth={2} />
-          <ReferenceLine y={18} stroke="#9C5256" strokeWidth={2} />
-          <ReferenceLine y={24} stroke="#9C5256" strokeWidth={2} />
+          <ReferenceLine y={15} stroke="#9C5256" strokeWidth={2} />
+          <ReferenceLine y={25} stroke="#9C5256" strokeWidth={2} />
           <Line
             type="monotone"
             name="Temperature"
@@ -121,7 +136,14 @@ const App = () => {
             fill="black"
             strokeWidth={2}
           />
-          <Brush fill="#EBECF0" stroke="#73ABD7" width={"100%"} height={20} />
+          <Brush
+            fill="#EBECF0"
+            slideOpacity={0.5}
+            backgroundFill="red"
+            stroke="#73ABD7"
+            width={"100%"}
+            height={20}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>
