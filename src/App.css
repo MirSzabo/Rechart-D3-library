@@ -1,9 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 .App {
-    background: #E5E5E5;
+    background:  rgba(196, 196, 196, 0.3);
 }
 
 .chart-container {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 20px;
-  padding: 1rem;
+  padding: 2rem 0;
+  padding-right: 5rem;
 }
+
+.range-bar {
+    background: red;
+}
+
+/*.recharts-brush range-bar {
+    border-radius: 20px;
+    box-shadow: inset -3px -3px 5px rgba(255, 255, 255, 0.7), inset 2px 2px 5px #C9CBD8;
+}*/

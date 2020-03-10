@@ -3,83 +3,15 @@ import "./App.css";
 import {
   ResponsiveContainer,
   LineChart,
-  CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
   Brush,
-  Legend,
   Line,
-  ReferenceLine,
-  ComposedChart,
-  Area,
-  Bar
+  ReferenceLine
 } from "recharts";
 
 import shiso from "./components/lettuce.json";
-
-const data = [
-  {
-    date: "22.01.2020",
-    temperature: 10
-  },
-  {
-    date: "23.01.2020",
-    temperature: 5
-  },
-  {
-    date: "24.01.2020",
-    temperature: 25
-  },
-  {
-    date: "25.01.2020",
-    temperature: 15
-  },
-  {
-    date: "26.01.2020",
-    temperature: 18
-  },
-  {
-    date: "27.01.2020",
-    temperature: 19
-  },
-  {
-    date: "28.01.2020",
-    temperature: 5
-  },
-  {
-    date: "29.01.2020",
-    temperature: 0
-  },
-  {
-    date: "30.01.2020",
-    temperature: 20
-  },
-  {
-    date: "31.01.2020",
-    temperature: 23
-  },
-  {
-    date: "01.02.2020",
-    temperature: 30
-  },
-  {
-    date: "02.02.2020",
-    temperature: 15
-  },
-  {
-    date: "03.02.2020",
-    temperature: 9
-  },
-  {
-    date: "04.02.2020",
-    temperature: 3
-  },
-  {
-    date: "05.02.2020",
-    temperature: 7
-  }
-];
 
 const App = () => {
   return (
@@ -90,24 +22,23 @@ const App = () => {
       <h2 style={{ textAlign: "left" }}>TEMPERATURE</h2>
       <ResponsiveContainer
         className="chart-container"
-        width={"100%"}
+        width={"90%"}
         height={400}
       >
-        <LineChart
-          data={shiso}
-        >
+        <LineChart data={shiso}>
           <XAxis
             stroke="#DDE0E3"
             dataKey="timestamp"
+            height={50}
             domain={["dataMin", "dataMax"]}
             //interval={0}
             tick={{
-              transform: "translate(-60, 0)",
-              fontFamily: "Open Sans",
+              transform: "translate(-30, 0)",
+              fontFamily: "Roboto",
               textAlign: "right",
               lineHeight: "10px",
               fontSize: 10,
-              fill: "#666666"
+              fill: "#A3A3A3"
             }}
           />
           <YAxis
@@ -117,6 +48,7 @@ const App = () => {
             //domain={[0, 30]}
             tick={{
               transform: "translate(-20, 0)",
+              fontFamily: "Open Sans",
               fontSize: 10,
               fill: "#666666"
             }}
@@ -132,17 +64,21 @@ const App = () => {
             name="Temperature"
             unit={"°C"}
             dataKey="temp"
-            stroke="black"
-            fill="black"
+            stroke="#000000"
+            fill="#000000"
             strokeWidth={2}
           />
+
           <Brush
-            fill="#EBECF0"
-            slideOpacity={0.5}
-            backgroundFill="red"
+            className="range-bar"
+            //fill="#73ABD7"
+            startIndex={0}
+            endIndex={50}
             stroke="#73ABD7"
-            width={"100%"}
+            width={"90%"}
             height={20}
+            travellerWidth={15}
+            gap={5}
           />
         </LineChart>
       </ResponsiveContainer>
